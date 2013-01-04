@@ -24,10 +24,14 @@
 
 factors = [11, 12, 13, 14, 16, 17, 18, 19, 20]
 
-multiple = 20
+# we start at 2520
+# because the problem states
+# this is the LCM of 1..10
+multiple = 2520
 
 until factors.all? { |n| multiple % n == 0 }
-  multiple += 20
+  # step by 2520 because it is the LCM of 1..10
+  multiple += 2520
 end
 
 p multiple
