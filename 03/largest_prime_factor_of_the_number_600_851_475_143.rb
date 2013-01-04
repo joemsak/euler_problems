@@ -13,6 +13,6 @@ class Fixnum
 end
 
 factors = 600_851_475_143.factors
-prime_factors = factors.delete_if { |n| !n.prime? }
+prime_factors = factors.keep_if(&:prime?)
 
 p largest_prime_factor = prime_factors.max
