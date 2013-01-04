@@ -1,15 +1,8 @@
 #!/usr/bin/ruby
-class Fixnum
-  def prime?
-    factors == [self, 1]
-  end
+require './lib/factors'
 
-  def factors
-    return [1] if self == 1
-    i = 2
-    factor = (i..self).find { |n| self % n == 0 }
-    [factor] + (self / factor).factors
-  end
+class Fixnum
+  include Factors
 end
 
 factors = 600_851_475_143.factors
