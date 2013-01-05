@@ -57,15 +57,15 @@ describe FibonacciSequence do
   end
 
   it "returns the even numbered fibs" do
-    fib = FibonacciSequence.new(10)
+    fib = FibonacciSequence.new(89)
     fib.run!
     fib.even_terms.should == [2, 8, 34]
   end
 
   it "returns the sum of the even terms" do
-    fib = FibonacciSequence.new(10)
+    fib = FibonacciSequence.new(89)
     fib.run!
-    fib.sum_even_terms.should == 44 
+    fib.sum_even_terms.should == 44
   end
 
 end
