@@ -7,11 +7,11 @@
 #find the sum of the even-valued terms.
 
 class FibonacciSequence
-  attr_accessor :terms, :iterations
+  attr_accessor :terms, :upper_limit
 
   def initialize(num = 0)
-    @terms      = [1, 2] 
-    @iterations = num - 2 # the first 2 iterations are already completed
+    @terms       = [1, 2]
+    @upper_limit = num
   end
 
   def next_term
