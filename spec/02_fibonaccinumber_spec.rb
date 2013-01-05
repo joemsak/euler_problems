@@ -22,7 +22,7 @@ class FibonacciSequence
   end
 
   def run!
-    iterations.times do |i|
+    while next_term <= upper_limit do
       terms << next_term
     end
   end
