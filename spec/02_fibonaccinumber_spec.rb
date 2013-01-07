@@ -12,6 +12,8 @@ class FibonacciSequence
   def initialize(num = 0)
     @terms       = [1, 2]
     @upper_limit = num
+    run!
+    self
   end
 
   def next_term
@@ -19,12 +21,6 @@ class FibonacciSequence
     prev_second_to_last_term = terms[-2]
 
     prev_last_term + prev_second_to_last_term
-  end
-
-  def run!
-    while next_term <= upper_limit do
-      terms << next_term
-    end
   end
 
   def even_terms
@@ -37,6 +33,12 @@ class FibonacciSequence
     even_terms.inject(&:+)
   end
 
+  private
+  def run!
+    while next_term <= upper_limit do
+      terms << next_term
+    end
+  end
 end
 
 describe FibonacciSequence do
@@ -52,19 +54,16 @@ describe FibonacciSequence do
 
   it "sequences the terms" do
     fib = FibonacciSequence.new(3)
-    fib.run!
     fib.terms.should == [1, 2, 3]
   end
 
   it "returns the even numbered fibs" do
     fib = FibonacciSequence.new(89)
-    fib.run!
     fib.even_terms.should == [2, 8, 34]
   end
 
   it "returns the sum of the even terms" do
     fib = FibonacciSequence.new(89)
-    fib.run!
     fib.sum_even_terms.should == 44
   end
 
@@ -73,5 +72,4 @@ end
 
 p "The Sum of the even fib numbers no greater than 4 million"
 fib = FibonacciSequence.new(4_000_000)
-fib.run!
 p fib.sum_even_terms
