@@ -9,61 +9,52 @@
 # find the sum of the even-valued terms.
 
 class FibonacciSequence
-  attr_accessor :terms, :upper_limit
-
   def initialize(num = 0)
     @terms       = [1, 2]
     @upper_limit = num
-  end
-
-  def next_term
-    prev_last_term           = terms.last
-    prev_second_to_last_term = terms[-2]
-
-    prev_last_term + prev_second_to_last_term
-  end
-
-  def even_terms
-    terms.reject do |t|
-      t % 2 != 0
-    end
   end
 
   def sum_even_terms
     even_terms.inject(&:+)
   end
 
+  def terms
+    while next_term <= upper_limit do
+      @terms << next_term
+    end
+
+    @terms
+  end
+
   private
+  attr_reader :upper_limit
+
+  def next_term
+    @terms[-1] + @terms[-2]
+  end
+
+  def even_terms
+    @even_terms ||= terms.reject do |t|
+      t % 2 != 0
     end
   end
 end
 
 describe FibonacciSequence do
-  it "has the first two terms" do
+  it "starts with the first two terms" do
     fib = FibonacciSequence.new
     fib.terms.should == [1, 2]
   end
 
-  it "adds the previous 2 terms" do
-    fib = FibonacciSequence.new
-    fib.next_term.should == 3
-  end
-
-  it "sequences the terms" do
+  it "sequences up to the upper limit" do
     fib = FibonacciSequence.new(3)
     fib.terms.should == [1, 2, 3]
-  end
-
-  it "returns the even numbered fibs" do
-    fib = FibonacciSequence.new(89)
-    fib.even_terms.should == [2, 8, 34]
   end
 
   it "returns the sum of the even terms" do
     fib = FibonacciSequence.new(89)
     fib.sum_even_terms.should == 44
   end
-
 end
 
 fib = FibonacciSequence.new(4_000_000)
