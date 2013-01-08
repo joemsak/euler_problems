@@ -14,8 +14,6 @@ class FibonacciSequence
   def initialize(num = 0)
     @terms       = [1, 2]
     @upper_limit = num
-    run!
-    self
   end
 
   def next_term
@@ -36,9 +34,6 @@ class FibonacciSequence
   end
 
   private
-  def run!
-    while next_term <= upper_limit do
-      terms << next_term
     end
   end
 end
