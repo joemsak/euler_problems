@@ -66,7 +66,7 @@ describe FibonacciSequence do
 
 end
 
-
-p "The Sum of the even fib numbers no greater than 4 million"
 fib = FibonacciSequence.new(4_000_000)
+
+p "The Sum of the even fib numbers no greater than 4 million:"
 p fib.sum_even_terms
