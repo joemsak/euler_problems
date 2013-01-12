@@ -1,6 +1,6 @@
 module Factors
   def prime?
-    (2..self - 1).each do |y|
+    (2..Math.sqrt(self)).each do |y|
       return false if self % y == 0
     end
 
