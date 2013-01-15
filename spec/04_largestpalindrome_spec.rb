@@ -10,7 +10,6 @@ class Palindrome
   end
 
   def findLargest(range1)
-    range2 = range1.dup
     largest = 0
     range1.each do |x|
       range1.each do |y|
