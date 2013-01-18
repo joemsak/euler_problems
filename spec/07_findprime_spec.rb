@@ -5,7 +5,8 @@ class FindPrime
 	def generatePrimes(num)
 		primes = Array.new
 		primes << 2 << 3
-		range1 = (5..150000).to_a.delete_if {|x| x % 2 == 0} #preset range with evens thrown out. prob. needs changing to remove arbitrary limit
+		range1 = (5..150000).to_a.delete_if {|x| x % 2 == 0} 
+		#preset range with evens thrown out. prob. needs changing to remove arbitrary limit
    			range1.each do |i|
    				if prime?(i)
    					primes << i
