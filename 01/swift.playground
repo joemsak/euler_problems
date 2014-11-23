@@ -1,0 +1,5 @@
+let multiples: [Int] = (1..<1000).map { $0 }.filter {
+    contains([$0 % 3, $0 % 5], 0)
+}
+
+multiples.reduce(0, +)
