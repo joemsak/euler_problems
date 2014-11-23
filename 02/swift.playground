@@ -1,0 +1,15 @@
+var fibSeq = [1, 2]
+
+while true {
+    var nextTerm = fibSeq[fibSeq.count - 1] + fibSeq[fibSeq.count - 2]
+
+    if nextTerm <= 4_000_000 {
+        fibSeq.append(nextTerm)
+    } else {
+        break
+    }
+}
+
+let evenFibs = fibSeq.filter { $0 % 2 == 0 }
+
+evenFibs.reduce(0, +)
